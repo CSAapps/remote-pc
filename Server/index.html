@@ -66,10 +66,10 @@
   <form id="form" action="">
     <input id="input" autocomplete="off" /><button>Send</button>
   </form>
-  <script src="https://cdn.socket.io/4.4.0/socket.io.min.js" integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj" crossorigin="https://z53861ec8-z3e2c9533-gtw.qovery.io"></script>
+  <script src="https://cdn.socket.io/4.4.0/socket.io.min.js"></script>
 
   <script>
-    var socket = io.connect('https://z53861ec8-z3e2c9533-gtw.qovery.io', {
+    var socket = io.connect('https://z53861ec8-z3e2c9533-gtw.qovery.io:80/', {
       query: `path=my-path`
     });
 
