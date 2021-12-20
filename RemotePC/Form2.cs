@@ -1,5 +1,4 @@
-﻿using SocketIOClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,19 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using SocketIOClient;
 
 namespace RemotePC
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
         SocketIO client;
-        public Form1()
+        public Form2()
         {
             InitializeComponent();
             InitSocket();
         }
-
         void DisplayText(string text)
         {
             this.Invoke(new Action(() =>
@@ -32,18 +30,10 @@ namespace RemotePC
 
         async void InitSocket()
         {
-            client = new SocketIO("https://z53861ec8-z3e2c9533-gtw.qovery.io");
-
-            client.On("key", response =>
-            {
-                string key = response.GetValue<string>();
-                SendKeys.SendWait(key);
-                Console.WriteLine(key);
-            });
-
+            client = new SocketIO("https://z53861ec8-z3e2c9533-gtw.qovery.io");           
 
             //client.OnConnected += async (sender, e) =>
-            client.OnConnected +=  (sender, e) =>
+            client.OnConnected += (sender, e) =>
             {
                 //await client.EmitAsync("hi", "socket.io");
                 DisplayText("RemotePC - Connected");
@@ -57,9 +47,29 @@ namespace RemotePC
             await client.ConnectAsync();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
             client.DisconnectAsync();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            client.EmitAsync("key", "{LEFT}");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            client.EmitAsync("key", "{RIGHT}");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            client.EmitAsync("key", " ");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            client.EmitAsync("key", "~");
         }
     }
 }

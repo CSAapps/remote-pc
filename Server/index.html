@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Socket.IO chat</title>
+  <title>RemotePC - Client</title>
   <style>
     body {
       margin: 0;
@@ -69,11 +69,12 @@
   <script src="https://cdn.socket.io/4.4.0/socket.io.min.js"></script>
 
   <script>
-    var url='https://z53861ec8-z3e2c9533-gtw.qovery.io';
+    //var url='https://z53861ec8-z3e2c9533-gtw.qovery.io';
     // url='http://localhost:3000/'
-    var socket = io.connect('', {
-      query: `data=my-data`
-    });
+    // var socket = io.connect('', {
+    //   query: `data=my-data`
+    // });
+    var socket = io();
 
     var messages = document.getElementById('messages');
     var form = document.getElementById('form');
