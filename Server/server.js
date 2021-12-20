@@ -12,25 +12,9 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/port', (req, res) => {
-  res.send(port+"");
-});
-
-app.get('/org', (req, res) => {
-  
-  var origin = req.get('origin');
-  res.send(origin+"");
-});
-
-app.get('/req', (req, res) => {
-  
-  
-  res.send(JSON.stringify(req));
-});
-
 io.on('connection', (socket) => {
-  socket.on('chat message', msg => {
-    io.emit('chat message', msg);
+  socket.on('key', data => {
+    socket.broadcast.emit('key', data);
   });
 });
 

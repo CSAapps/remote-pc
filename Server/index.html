@@ -69,8 +69,10 @@
   <script src="https://cdn.socket.io/4.4.0/socket.io.min.js"></script>
 
   <script>
-    var socket = io.connect('https://z53861ec8-z3e2c9533-gtw.qovery.io:80/', {
-      query: `path=my-path`
+    var url='https://z53861ec8-z3e2c9533-gtw.qovery.io';
+    // url='http://localhost:3000/'
+    var socket = io.connect('', {
+      query: `data=my-data`
     });
 
     var messages = document.getElementById('messages');
@@ -80,12 +82,12 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (input.value) {
-        socket.emit('chat message', input.value);
+        socket.emit('key', input.value);
         input.value = '';
       }
     });
 
-    socket.on('chat message', function (msg) {
+    socket.on('key', function (msg) {
       var item = document.createElement('li');
       item.textContent = msg;
       messages.appendChild(item);
