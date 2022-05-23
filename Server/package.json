@@ -1,6 +1,6 @@
 {
     "name": "remote-pc",
-    "version": "1.0",
+    "version": "1.0.0",
     "description": "controll another pc remotly",
     "dependencies": {
         "express": "^4.17.2",
