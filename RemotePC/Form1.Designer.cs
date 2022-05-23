@@ -37,7 +37,7 @@
             this.ClientSize = new System.Drawing.Size(280, 5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
-            this.Text = "RemotePC - Connecting . . .";
+            this.Text = "Connecting . . .  RemotePC";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);
 

@@ -32,7 +32,7 @@ namespace RemotePC
 
         async void InitSocket()
         {
-            client = new SocketIO("https://z53861ec8-z3e2c9533-gtw.qovery.io");
+            client = new SocketIO("https://remote-pc-production.up.railway.app/");
 
             client.On("key", response =>
             {
@@ -46,12 +46,12 @@ namespace RemotePC
             client.OnConnected +=  (sender, e) =>
             {
                 //await client.EmitAsync("hi", "socket.io");
-                DisplayText("RemotePC - Connected");
+                DisplayText("Connected - RemotePC");
             };
 
             client.OnDisconnected += (sender, e) =>
             {
-                DisplayText("RemotePC - Disconnected");
+                DisplayText("Disconnected - RemotePC");
             };
 
             await client.ConnectAsync();
