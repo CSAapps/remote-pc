@@ -3,6 +3,7 @@
 
 <head>
   <title>RemotePC - Client</title>
+  <meta name='viewport' content='width=device-width'>
   <style>
     body {
       margin: 0;
@@ -63,6 +64,8 @@
 
 <body>
   <ul id="messages"></ul>
+  <button id="btnLeft">Left</button>
+  <button id="btnRight">Right</button>
   <form id="form" action="">
     <input id="input" autocomplete="off" /><button>Send</button>
   </form>
@@ -79,6 +82,16 @@
     var messages = document.getElementById('messages');
     var form = document.getElementById('form');
     var input = document.getElementById('input');
+    var btnLeft = document.getElementById('btnLeft');
+    var btnRight = document.getElementById('btnRight');
+
+    btnLeft.onclick=()=>{
+      socket.emit('key', "{LEFT}");
+    }
+
+    btnRight.onclick=()=>{
+      socket.emit('key', "{RIGHT}");
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
