@@ -8,13 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//Rx
 
 namespace RemotePC
 {
     public partial class Form1 : Form
     {
         SocketIO client;
+        //string socketUrl = "https://remote-pc-production.up.railway.app/";
+        string socketUrl = "http://localhost:3000/";
+        string roomId = "";
         public Form1()
         {
             InitializeComponent();
@@ -32,7 +35,14 @@ namespace RemotePC
 
         async void InitSocket()
         {
-            client = new SocketIO("https://remote-pc-production.up.railway.app/");
+            client = new SocketIO(socketUrl, new SocketIOOptions
+            {
+                Query = new List<KeyValuePair<string, string>>
+                    {
+                        new KeyValuePair<string, string>("Rx","1"),
+                        new KeyValuePair<string, string>("roomId",roomId)
+                    }
+            });
 
             client.On("key", response =>
             {
@@ -41,13 +51,19 @@ namespace RemotePC
                 Console.WriteLine(key);
             });
 
+            client.On("roomId", response =>
+            {
+                roomId = response.GetValue<string>();
+                MessageBox.Show(roomId);
+            });
+
 
             //client.OnConnected += async (sender, e) =>
-            client.OnConnected +=  (sender, e) =>
-            {
-                //await client.EmitAsync("hi", "socket.io");
-                DisplayText("Connected - RemotePC");
-            };
+            client.OnConnected += (sender, e) =>
+           {
+               //await client.EmitAsync("hi", "socket.io");
+               DisplayText("Connected - RemotePC");
+           };
 
             client.OnDisconnected += (sender, e) =>
             {
@@ -57,9 +73,20 @@ namespace RemotePC
             await client.ConnectAsync();
         }
 
+        async void Exit()
+        {
+            await client.EmitAsync("exit",roomId);
+            await client.DisconnectAsync();
+        }
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            client.DisconnectAsync();
+           Exit();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
