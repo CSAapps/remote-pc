@@ -6,11 +6,16 @@ const port = process.env.PORT || 3000;
 var roomIds = new Set();
 
 function getRoomId() {
-  var lastRoomId = 0;
+  var lastRoomId = 1;
   while (roomIds.has(lastRoomId)) lastRoomId++;
   roomIds.add(lastRoomId);
-  return lastRoomId;
+  return lastRoomId + '';
 }
+
+function rmvRoomId(roomId) {
+  roomIds.delete(roomId - 0);
+}
+
 app.get('/api', (req, res) => {
   res.send('Hi from API');
 });
@@ -22,24 +27,24 @@ app.get('/', (req, res) => {
 io.on('connection', socket => {
 
   var query = socket.handshake.query;
-  if (query.Rx && !query.roomId) {
-    var roomId = getRoomId();
-    socket.join(roomId);
-    socket.Rx = 1;
-    socket.emit('roomId', roomId + '');
-    console.log({ roomId });
-    console.log({ roomIds });
+  console.log(query.roomId);
+  if (query.Rx) {
+    if (!query.roomId) {
+      query.roomId = getRoomId();
+      socket.emit('roomId', query.roomId);
+
+    }
+    socket.join(query.roomId);
+    socket.on('exit', data => {
+      rmvRoomId(data);
+      console.log({ data });
+    });
+  } else {
+    socket.on('key', data => {
+      socket.to(query.roomId).emit('key', data);
+      console.log(query.roomId);
+    });
   }
-
-
-  socket.on('key', data => {
-    socket.broadcast.emit('key', data);
-  });
-
-  socket.on('exit', data => {
-    if (socket.Rx) roomIds.delete(data - 0);
-    console.log({ data });
-  });
 
 });
 

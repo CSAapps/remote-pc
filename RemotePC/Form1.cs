@@ -54,7 +54,7 @@ namespace RemotePC
             client.On("roomId", response =>
             {
                 roomId = response.GetValue<string>();
-                MessageBox.Show(roomId);
+                txtRoomId.Invoke(new Action(() => txtRoomId.Text = roomId));                
             });
 
 

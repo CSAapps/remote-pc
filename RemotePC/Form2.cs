@@ -8,16 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SocketIOClient;
+using Microsoft.VisualBasic;
 
 namespace RemotePC
 {
     public partial class Form2 : Form
     {
         SocketIO client;
+        //string socketUrl = "https://remote-pc-production.up.railway.app/";
+        string socketUrl = "http://localhost:3000/";
         public Form2()
         {
-            InitializeComponent();
-            InitSocket();
+            InitializeComponent();            
         }
         void DisplayText(string text)
         {
@@ -28,15 +30,21 @@ namespace RemotePC
             ));
         }
 
-        async void InitSocket()
+        async void InitSocket(string roomId)
         {
-            client = new SocketIO("https://remote-pc-production.up.railway.app");           
+            client = new SocketIO(socketUrl, new SocketIOOptions
+            {
+                Query = new List<KeyValuePair<string, string>>
+                    {                        
+                        new KeyValuePair<string, string>("roomId",roomId)
+                    }
+            });
 
             //client.OnConnected += async (sender, e) =>
             client.OnConnected += (sender, e) =>
             {
                 //await client.EmitAsync("hi", "socket.io");
-                DisplayText("Connected - RemotePC");
+                DisplayText(roomId+" Connected - RemotePC");
             };
 
             client.OnDisconnected += (sender, e) =>
@@ -74,7 +82,8 @@ namespace RemotePC
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            
+            string roomId = Interaction.InputBox("Enter roomId");
+            InitSocket(roomId);
         }
     }
 }

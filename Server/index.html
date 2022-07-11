@@ -72,12 +72,18 @@
   <script src="https://cdn.socket.io/4.4.0/socket.io.min.js"></script>
 
   <script>
-    //var url='https://z53861ec8-z3e2c9533-gtw.qovery.io';
-    // url='http://localhost:3000/'
-    // var socket = io.connect('', {
-    //   query: `data=my-data`
-    // });
-    var socket = io();
+
+    var roomId = location.search.substring(1);
+
+    if (!roomId)
+      roomId = 'roomId=' + prompt('Enter roomId');
+
+    var socket = io('', {
+      query: roomId
+    });
+
+    console.log(location.pathname);
+    console.log(location.search);
 
     var messages = document.getElementById('messages');
     var form = document.getElementById('form');
@@ -85,11 +91,11 @@
     var btnLeft = document.getElementById('btnLeft');
     var btnRight = document.getElementById('btnRight');
 
-    btnLeft.onclick=()=>{
+    btnLeft.onclick = () => {
       socket.emit('key', "{LEFT}");
     }
 
-    btnRight.onclick=()=>{
+    btnRight.onclick = () => {
       socket.emit('key', "{RIGHT}");
     }
 
