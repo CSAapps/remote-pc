@@ -54,7 +54,8 @@ namespace RemotePC
             client.On("roomId", response =>
             {
                 roomId = response.GetValue<string>();
-                txtRoomId.Invoke(new Action(() => txtRoomId.Text = roomId));                
+                txtRoomId.Invoke(new Action(() => txtRoomId.Text = roomId));
+                lblInfo.Invoke(new Action(() => lblInfo.Text = "Share this code"));
             });
 
 
@@ -87,6 +88,23 @@ namespace RemotePC
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtRoomId_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtRoomId_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtRoomId.Text);
+            lblInfo.Text = "Coppied";
+        }
+
+        private void lblInfo_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText("https://remotepc.ml/?roomId="+txtRoomId.Text);
+            lblInfo.Text = "Coppied as URL";
         }
     }
 }
