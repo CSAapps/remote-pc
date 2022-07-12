@@ -15,8 +15,8 @@ namespace RemotePC
     public partial class Form1 : Form
     {
         SocketIO client;
-        //string socketUrl = "https://remote-pc-production.up.railway.app/";
-        string socketUrl = "http://localhost:3000/";
+        string socketUrl = "https://remote-pc-production.up.railway.app/";
+        //string socketUrl = "http://localhost:3000/";
         string roomId = "";
         public Form1()
         {
