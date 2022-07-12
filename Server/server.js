@@ -7,7 +7,11 @@ var roomIds = new Set();
 
 function getRoomId() {
   var lastRoomId = 1;
-  while (roomIds.has(lastRoomId)) lastRoomId++;
+  var i = 0;
+  do {
+    lastRoomId = Math.floor(1000 + Math.random() * (9000 + i));
+    i += 10;
+  } while (roomIds.has(lastRoomId));
   roomIds.add(lastRoomId);
   return lastRoomId + '';
 }
