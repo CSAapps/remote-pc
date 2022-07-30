@@ -3,6 +3,10 @@ const http = require('http').Server(app);
 const io = require("socket.io")(http);
 const port = process.env.PORT || 3000;
 
+app.get('/', (req, res) => {
+  res.sendFile('normal version is deactivated. use quick version');
+});
+
 app.get('/q', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
