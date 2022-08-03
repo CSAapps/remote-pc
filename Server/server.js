@@ -18,6 +18,7 @@ app.get('/qd', (req, res) => {
 io.on('connection', (socket) => {
   console.log(Date.now());
   socket.on('key', data => {
+    console.log(data);
     socket.broadcast.emit('key', data);
   });
 });
