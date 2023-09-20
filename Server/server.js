@@ -12,7 +12,7 @@ app.get('/q', (req, res) => {
 });
 
 app.get('/qd', (req, res) => {
-  return res.redirect("https://github.com/CSAapps/remote-pc/releases/download/q/RemotePC.zip");
+  return res.redirect("https://github.com/CSAapps/remote-pc/releases/download/q2.0/RemotePC.zip");
 });
 
 io.on('connection', (socket) => {
