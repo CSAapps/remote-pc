@@ -32,7 +32,7 @@ namespace RemotePC
 
         async void InitSocket()
         {
-            client = new SocketIO("https://remote-pc-production.up.railway.app/");
+            client = new SocketIO("https://remotepc-3ipwxc6egq-em.a.run.app");
 
             client.On("key", response =>
             {
@@ -60,6 +60,11 @@ namespace RemotePC
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             client.DisconnectAsync();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

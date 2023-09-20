@@ -30,7 +30,7 @@ namespace RemotePC
 
         async void InitSocket()
         {
-            client = new SocketIO("https://remote-pc-production.up.railway.app");           
+            client = new SocketIO("https://remotepc-3ipwxc6egq-em.a.run.app");           
 
             //client.OnConnected += async (sender, e) =>
             client.OnConnected += (sender, e) =>

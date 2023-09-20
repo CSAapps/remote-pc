@@ -111,7 +111,7 @@
     </div>
   </div>
 
-  <script src="https://cdn.socket.io/4.4.0/socket.io.min.js"></script>
+   <script src="/socket.io/socket.io.js"></script>
 
   <script>
 
@@ -158,21 +158,21 @@
       }
     }
 
-    var noSleep = new NoSleep();
+    // var noSleep = new NoSleep();
 
-    function enableNoSleep() {
-      noSleep.enable();
-      document.removeEventListener('touchstart', enableNoSleep, false);
-    }
+    // function enableNoSleep() {
+    //   noSleep.enable();
+    //   document.removeEventListener('touchstart', enableNoSleep, false);
+    // }
 
-    function disableNoSleep() {
-      noSleep.disable();
-    }
+    // function disableNoSleep() {
+    //   noSleep.disable();
+    // }
 
-    // Enable wake lock.
-    // (must be wrapped in a user input event handler e.g. a mouse or touch handler)
-    document.addEventListener('touchstart', enableNoSleep, false);
-    document.addEventListener('onbeforeunload', disableNoSleep, false);
+    // // Enable wake lock.
+    // // (must be wrapped in a user input event handler e.g. a mouse or touch handler)
+    // document.addEventListener('touchstart', enableNoSleep, false);
+    // document.addEventListener('onbeforeunload', disableNoSleep, false);
     // socket.on('key', function (msg) {
     //   var item = document.createElement('li');
     //   item.textContent = msg;
