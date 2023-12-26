@@ -28,6 +28,11 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/qd', (req, res) => {
+  return res.redirect("https://github.com/CSAapps/remote-pc/releases/download/q2.0/RemotePC.zip");
+});
+
+
 io.on('connection', socket => {
 
   var query = socket.handshake.query;

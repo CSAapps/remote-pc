@@ -42,6 +42,7 @@
             this.txtRoomId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtRoomId.Click += new System.EventHandler(this.txtRoomId_Click);
             this.txtRoomId.TextChanged += new System.EventHandler(this.txtRoomId_TextChanged);
+            this.txtRoomId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRoomId_KeyPress);
             // 
             // lblInfo
             // 

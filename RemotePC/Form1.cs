@@ -15,12 +15,14 @@ namespace RemotePC
     public partial class Form1 : Form
     {
         SocketIO client;
-        string socketUrl = "https://remote-pc-production.up.railway.app/";
-        //string socketUrl = "http://localhost:3000/";
+        //string socketUrl = "https://remote-pc-production.up.railway.app/";
+        string socketUrl = "http://localhost:3000/";
         string roomId = "";
-        public Form1()
+        public Form1(string roomId="")
         {
             InitializeComponent();
+            this.roomId = roomId;
+            txtRoomId.Text = roomId;
             InitSocket();
         }
 
@@ -35,6 +37,7 @@ namespace RemotePC
 
         async void InitSocket()
         {
+            
             client = new SocketIO(socketUrl, new SocketIOOptions
             {
                 Query = new List<KeyValuePair<string, string>>
@@ -103,8 +106,16 @@ namespace RemotePC
 
         private void lblInfo_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText("https://remotepc.ml/?roomId="+txtRoomId.Text);
+            Clipboard.SetText(socketUrl+"?"+txtRoomId.Text);
             lblInfo.Text = "Coppied as URL";
+        }
+
+        private void txtRoomId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)13)
+            {
+
+            }
         }
     }
 }

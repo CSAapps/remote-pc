@@ -18,6 +18,8 @@ namespace RemotePC
             Application.SetCompatibleTextRenderingDefault(false);
             if (args.Length == 0)
                 Application.Run(new Form1());
+            else if (args[0]=="q")
+                Application.Run(new Form1("q"));
             else
                 Application.Run(new Form2());
         }
