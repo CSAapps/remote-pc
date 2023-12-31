@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
 # Slide Remote (remote-pc)
 
 A useful tool to control slides when doing a group presentation by looking at somebody else’s screen via 
@@ -10,11 +7,18 @@ communication.
 
 ## Tech Stack
 
-+ Backend - <i class="fab fa-node-js"></i> NodeJS 
++ Backend -  NodeJS 
 
-+ Frontend - <i class="fab fa-js"></i> JavaScript &nbsp;&nbsp;  <i class="fab fa-windows"></i> C#
++ Frontend -  JavaScript , C#
 
-+ Frameworks - <i class="fas fa-plug"></i> socket.io
++ Frameworks - socket.io
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="icon" width="60" height="60"> &nbsp;
+<img src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" alt="icon" width="60" height="60">&nbsp;
+<img src="https://user-images.githubusercontent.com/25181517/121405384-444d7300-c95d-11eb-959f-913020d3bf90.png" alt="icon" width="60" height="60">&nbsp;
+<img src="https://socket.io/images/logo-dark.svg" alt="icon" width="60" height="60"> 
 
 ## Architecture
 
@@ -26,7 +30,7 @@ communication.
     - Sending controlling signals to the server
        
     - Cross Platform
-        - Web version - <i class="fas fa-external-link-alt"></i> [Live Demo](https://pcremote.line.pm/)       
+        - Web version - 🌐🔗 [Live Demo](https://pcremote.line.pm/)       
 
         - Windows Version
 
@@ -40,6 +44,3 @@ communication.
     - Generating new `room IDs` when new `Client - Rx` connects
 
     - Manipulating  `sockets` by assigning them to rooms based on `room ID`
-
-
-
