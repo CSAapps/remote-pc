@@ -30,7 +30,7 @@ communication.
     - Sending controlling signals to the server
        
     - Cross Platform
-        - Web version - 🌐🔗 [Live Demo](https://pcremote.line.pm/)       
+        - Web version - 🌐🔗 [Live Demo](https://remotepc.onrender.com/)       
 
         - Windows Version
 

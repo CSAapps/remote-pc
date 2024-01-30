@@ -16,7 +16,7 @@ namespace RemotePC
     {
         SocketIO client;
         //string socketUrl = "https://www.remote.linkpc.net";
-        string socketUrl = "https://pcremote-6yew3bsv4q-el.a.run.app";
+        string socketUrl = "https://remotepc.onrender.com";
         //string socketUrl = "http://localhost:3000";
         string roomId = "";
         public Form1(string roomId="")

@@ -15,7 +15,7 @@ namespace RemotePC
     public partial class Form2 : Form
     {
         SocketIO client;
-        string socketUrl = "https://www.remote.linkpc.net";
+        string socketUrl = "https://remotepc.onrender.com";
         //string socketUrl = "http://localhost:3000";
         public Form2()
         {
